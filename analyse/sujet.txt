@@ -1,0 +1,11 @@
+Sujet : Analyser et développer un système de vente de billets pour une salle de spectacles.
+Langages de développement et outils : Open !
+Fonctionnalités utilisateurs attendues (à minima) : 
+Pouvoir acheter une ou plusieurs places ;
+Pouvoir annuler une réservation ;
+Pouvoir choisir sa ou ses places sur un plan.
+La plateforme développée devra être capable (à minima)
+De gérer différents spectacles sur plusieurs dates ;
+D’arrêter les ventes si une date est complète ;
+Gérer les utilisateurs qui achètent ou annulent des places ;
+Pouvoir vendre une place sur deux en cas de Covid-19 par exemple.
