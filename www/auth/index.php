@@ -1,9 +1,3 @@
-<?php
-  //session_start();
-  //$_SESSION["role"] = "admin"
-
-?>
-
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -19,7 +13,7 @@
       <div class="login-page">
         <div class="form">
           <form class="login-form" id="login-form">
-            <input type="text" placeholder="name" id="name"/>
+            <input type="text" placeholder="username" id="username"/>
             <input type="password" placeholder="password" id="password"/>
             <button id="login_button">Log in</button>
             <div id="login_error">

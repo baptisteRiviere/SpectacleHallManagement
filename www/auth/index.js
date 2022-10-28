@@ -6,11 +6,11 @@ let login_error = document.getElementById('login_error');
 login_form.addEventListener('submit', (evnt) => {
   evnt.preventDefault();
 
-  var name = login_form.elements["name"];
-
+  var username = login_form.elements["username"];
+  var password = login_form.elements["password"];
 
   var data = new FormData();
-  data.append('name',name.value);
+  data.append('username',username.value);
   data.append('password',password.value);
   fetch('../accessDB/login.php', {
     method: 'post',
@@ -19,10 +19,9 @@ login_form.addEventListener('submit', (evnt) => {
   .then(r => r.json())
   .then(r => {
     if (r.login_valid) {
-      console.log("yes");
       history.back();
     } else {
-      console.log("no");
+      login_error.innerHTML = "<p class='message'>username or password invalid</p>";
     }
     //console.log(r.erreur);
   })
