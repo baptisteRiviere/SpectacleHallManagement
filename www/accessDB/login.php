@@ -1,7 +1,24 @@
 <?php
+
+  include "connect.php";
+
   if ((isset($_POST['username'])) && (isset($_POST['password']))) {
-    // select * from login where password = password('april');
-    $login_valid = (($_POST['username'] == "admin") && ($_POST['password'] == "admin"));
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $requete = "SELECT EXISTS (SELECT * FROM user WHERE username = '$username' AND password = '$password')";
+
+    $response = [];
+    if ($result = mysqli_query($link,$requete)) {
+      while ($line = mysqli_fetch_assoc($result)) {
+        $response = $line;
+      }
+    }
+
+    $key = array_keys($response)[0];
+    $login_valid = $response[$key];
+  
     if ($login_valid) {
       session_start();
       $_SESSION['role'] = $_POST['username'];
@@ -9,7 +26,7 @@
     echo json_encode(array('login_valid' => $login_valid));
 
   } else {
-    echo json_encode(array('erreur' => "Error: the username has not be posted"));
-    //echo json_encode(array('erreur' => "Erreur de connexion à la base de données"));
+    echo json_encode(array('erreur' => "Error: please complete username and password"));
   }
+  
  ?>

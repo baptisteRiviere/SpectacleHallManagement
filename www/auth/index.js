@@ -18,6 +18,7 @@ login_form.addEventListener('submit', (evnt) => {
   })
   .then(r => r.json())
   .then(r => {
+    console.log(r);
     if (r.login_valid) {
       history.back();
     } else {
