@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 28 oct. 2022 à 19:04
+-- Généré le : ven. 28 oct. 2022 à 19:22
 -- Version du serveur :  5.7.24
 -- Version de PHP : 8.0.1
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `concertHall`
+-- Base de données : `concerthall`
 --
 
 -- --------------------------------------------------------
@@ -81,6 +81,7 @@ CREATE TABLE `ticket` (
 
 CREATE TABLE `user` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(20) NOT NULL,
   `firstname` varchar(20) NOT NULL,
   `lastname` varchar(20) NOT NULL,
   `mail` varchar(20) NOT NULL,
@@ -88,6 +89,13 @@ CREATE TABLE `user` (
   `birthdate` date NOT NULL,
   `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `mail`, `adress`, `birthdate`, `password`) VALUES
+(1, 'admin', 'admin', 'admin', 'admin@admin.com', 'admin streets, admin city', '2000-01-01', 'admin');
 
 --
 -- Index pour les tables déchargées
@@ -128,7 +136,8 @@ ALTER TABLE `ticket`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_user` (`id`);
+  ADD UNIQUE KEY `id_user` (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -162,7 +171,7 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Contraintes pour les tables déchargées
