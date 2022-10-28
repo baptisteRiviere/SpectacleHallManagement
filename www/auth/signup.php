@@ -17,10 +17,10 @@
             <input type="text" placeholder="firstname" id="firstname"/>
             <input type="text" placeholder="lastname" id="lastname"/>
             <input type="text" placeholder="mail" id="mail"/>
-            <input type="text" placeholder="adress" id="adress"/>
+            <input type="text" placeholder="address" id="address"/>
             <input type="date" placeholder="birthdate" id="birthdate"/>
             <input type="password" placeholder="password" id="password"/>
-            <input type="password" placeholder="confirm password" id="confirm password"/>
+            <input type="password" placeholder="password_conf" id="password_conf"/>
             <button id="signup_button">Sign up</button>
             <div id="signup_error">
             </div>
