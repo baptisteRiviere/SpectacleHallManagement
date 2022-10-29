@@ -1,7 +1,6 @@
 var signup_form = document.getElementById('signup-form');
 var signup_error = document.getElementById('signup_error');
 
-
 signup_form.addEventListener('submit', (evnt) => {
   evnt.preventDefault();
   
@@ -23,13 +22,13 @@ signup_form.addEventListener('submit', (evnt) => {
     method: 'post',
     body: data
   })
-  .then(r => r.text())
+  .then(r => r.json())
   .then(r => {
-    console.log(r);
     if (r.signup_valid) {
-      history.back();
+      alert("user has been succesfully writen, please log in")
+      window.location.href = "index.php";
     } else {
-      signup_error.innerHTML = "<p class='message'>please fill every field</p>";
+      signup_error.innerHTML = "<p class='message'>" + r.error + "</p>";
     }
   })
   .catch((error) => {

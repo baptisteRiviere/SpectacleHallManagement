@@ -7,10 +7,10 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $requete = "SELECT EXISTS (SELECT * FROM user WHERE username = '$username' AND password = '$password')";
+    $request = "SELECT EXISTS (SELECT * FROM user WHERE username = '$username' AND password = '$password')";
 
     $response = [];
-    if ($result = mysqli_query($link,$requete)) {
+    if ($result = mysqli_query($link,$request)) {
       while ($line = mysqli_fetch_assoc($result)) {
         $response = $line;
       }
@@ -22,8 +22,9 @@
     if ($login_valid) {
       session_start();
       $_SESSION['role'] = $_POST['username'];
+    } else {
+      echo json_encode(array('login_valid' => $login_valid));
     }
-    echo json_encode(array('login_valid' => $login_valid));
 
   } else {
     echo json_encode(array('error' => "Error: please complete username and password"));
