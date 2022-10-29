@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 28 oct. 2022 à 19:22
+-- Généré le : sam. 29 oct. 2022 à 18:05
 -- Version du serveur :  5.7.24
 -- Version de PHP : 8.0.1
 
@@ -85,7 +85,7 @@ CREATE TABLE `user` (
   `firstname` varchar(20) NOT NULL,
   `lastname` varchar(20) NOT NULL,
   `mail` varchar(20) NOT NULL,
-  `adress` varchar(40) NOT NULL,
+  `address` varchar(40) NOT NULL,
   `birthdate` date NOT NULL,
   `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -94,7 +94,7 @@ CREATE TABLE `user` (
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `mail`, `adress`, `birthdate`, `password`) VALUES
+INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `mail`, `address`, `birthdate`, `password`) VALUES
 (1, 'admin', 'admin', 'admin', 'admin@admin.com', 'admin streets, admin city', '2000-01-01', 'admin');
 
 --
@@ -171,7 +171,7 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Contraintes pour les tables déchargées
