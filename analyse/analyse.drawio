@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-10-29T13:47:05.832Z" agent="5.0 (Windows)" etag="Vg3xm6esoRkN5ZQYoQEz" version="20.5.1" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2022-10-29T13:47:47.446Z" agent="5.0 (Windows)" etag="59kpQdYW6mjTLgFNPtiA" version="20.5.1" type="github" pages="8">
   <diagram id="MTtmtglNewBOw-12boB2" name="brainstorming">
     <mxGraphModel dx="2105" dy="1697" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -1608,7 +1608,7 @@
         <mxCell id="wy-lgWieGLmqqHPlri0I-4" value="&lt;div&gt;(index)&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;spectacle list (access to Spectacle)&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;account (access to Personal or log-in)&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;" parent="1" vertex="1">
           <mxGeometry x="530" y="-150" width="220" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="1IzXC0jud4pEP-LnyWe_-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="1IzXC0jud4pEP-LnyWe_-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF9C78;" parent="1" vertex="1">
           <mxGeometry x="-360" y="-40" width="220" height="140" as="geometry" />
         </mxCell>
         <mxCell id="1IzXC0jud4pEP-LnyWe_-2" value="admin&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;/admin&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
