@@ -22,10 +22,26 @@
     $key = array_keys($response)[0];
     $login_valid = $response[$key];
   
+    // request to get the status of the user (admin, spectator, artist)
+    $request = "SELECT status FROM user WHERE username = '$username'";
+    
+    // asking database
+    $response = [];
+    if ($result = mysqli_query($link,$request)) {
+      while ($line = mysqli_fetch_assoc($result)) {
+        $response = $line;
+      }
+    }
+
+    // getting the status
+    $key = array_keys($response)[0];
+    $status = $response[$key];
+
     // if the login is valid, start a php session
     if ($login_valid) {
       session_start();
-      $_SESSION['role'] = $username;
+      $_SESSION['status'] = $status;
+      $_SESSION['username'] = $username;
     } 
 
     // return the state of login valid
