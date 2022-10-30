@@ -10,9 +10,22 @@
   </head>
   <body>
     <?php include("../scrollmenu.php"); ?>
-    <p>quelques petites informations sur toi</p>
 
-    <p><a href="basket.php">basket</a></p>
+    <div id="information">
+      <p>quelques petites informations sur toi</p>
+    </div>
 
+    <div id="basket">
+      <p>basket</p>
+    </div>
+
+    <div id="log out">
+      <p>log out</p>
+    </div>
+
+
+    <script src="index.js"></script>
+
+    
   </body>
 </html>
