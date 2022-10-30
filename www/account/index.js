@@ -1,4 +1,3 @@
-
 // calling php script to get pieces of information about the user
 fetch('../accessDB/getUserInformation.php')
 .then(r => r.json())
