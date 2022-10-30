@@ -18,5 +18,5 @@
     }
 
     // return the list with every information
-    echo json_encode($response);
+    echo json_encode($response[0]);
  ?>

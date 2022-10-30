@@ -2,6 +2,9 @@
 fetch('../accessDB/getUserInformation.php')
 .then(r => r.json())
 .then(r => {
+    let firstname = document.getElementById("firstname");
+    firstname.innerText = r.firstname;
+    firstname.innerText = r.firstname;
     console.log(r);
 })
 
