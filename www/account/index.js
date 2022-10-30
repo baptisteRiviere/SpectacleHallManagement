@@ -1,30 +1,20 @@
-var login_form = document.getElementById('login-form');
-var login_error = document.getElementById('login_error');
+var logout_form = document.getElementById('logout_form');
 
-login_form.addEventListener('submit', (evnt) => {
+logout_form.addEventListener('submit', (evnt) => {
   evnt.preventDefault();
 
-  var username = login_form.elements["username"];
-  var password = login_form.elements["password"];
-
   var data = new FormData();
-  data.append('username',username.value);
-  data.append('password',password.value);
-  fetch('../accessDB/login.php', {
+  fetch('../auth/logout.php', {
     method: 'post',
     body: data
   })
   .then(r => r.json())
   .then(r => {
-    console.log(r);
-    if (r.login_valid) {
-      window.location.href = "../account/index.php";
+    if (r.logout_valid) {
+      window.location.href = "../index.php";
     } else {
-      login_error.innerHTML = "<p class='message'>username or password invalid</p>";
+      console.log("logout failed");
     }
   })
-  .catch((error) => {
-    console.log(error);
-  });
 });
 

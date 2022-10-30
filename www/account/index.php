@@ -19,8 +19,10 @@
       <p>basket</p>
     </div>
 
-    <div id="log out">
-      <p>log out</p>
+    <div id="logout">
+      <form class="logout_form" id="logout_form">
+        <button id="login_button">Log out</button>
+      </form>
     </div>
 
 
