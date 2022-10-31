@@ -7,7 +7,7 @@ fetch('../accessDB/getArtistList.php')
         // create option using DOM
         const newOption = document.createElement('option');
         newOption.value = artist.id;
-        newOption.innerHTML = artist.firstname + artist.lastname;
+        newOption.innerHTML = artist.firstname + " " + artist.lastname;
         select.appendChild(newOption);
     });
 })

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 29 oct. 2022 à 18:05
+-- Généré le : lun. 31 oct. 2022 à 13:51
 -- Version du serveur :  5.7.24
 -- Version de PHP : 8.0.1
 
@@ -55,9 +55,16 @@ CREATE TABLE `spectacle` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(40) NOT NULL,
   `description` text NOT NULL,
-  `id_artist` bigint(20) UNSIGNED NOT NULL,
-  `image_path` varchar(30) NOT NULL
+  `id_artist` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `spectacle`
+--
+
+INSERT INTO `spectacle` (`id`, `name`, `description`, `id_artist`) VALUES
+(13, 'patinage semi artistique', 'Le ptit Rex vous propose un événement de danse incroyable mellant patinage et chants, Soso lagirafe vous fera vibrer par sa grace et son interprétation de Et si tu n existais pas', 2),
+(14, 'Que ça swing', 'Comment peut-on concevoir un spectacle aussi surprenant ? Bixente nous fait voyager dans le temps pour revenir sur l histoire du golf avec un humour époustouflant ! Du club de golf à la voiturette (bien utile dans certains contextes), Bixente vous fera hurler de rire', 3);
 
 -- --------------------------------------------------------
 
@@ -87,15 +94,18 @@ CREATE TABLE `user` (
   `mail` varchar(20) NOT NULL,
   `address` varchar(40) NOT NULL,
   `birthdate` date NOT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(20) NOT NULL,
+  `status` varchar(6) NOT NULL DEFAULT 'SPECTA'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `mail`, `address`, `birthdate`, `password`) VALUES
-(1, 'admin', 'admin', 'admin', 'admin@admin.com', 'admin streets, admin city', '2000-01-01', 'admin');
+INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `mail`, `address`, `birthdate`, `password`, `status`) VALUES
+(1, 'admin', 'admin', 'admin', 'admin@admin.com', 'admin streets, admin city', '2000-01-01', 'admin', 'ADMIN'),
+(2, 'sosolagirafe', 'soso', 'lagirafe', 'soso@lagirafe.com', '44 rue de la savane', '2022-10-11', 'sop', 'ARTIST'),
+(3, 'BixenteHoet', 'Bixente', 'Hoet', 'bixente@hoet.com', '58 rue du terrain de golf', '2022-10-11', 'vin', 'ARTIST');
 
 --
 -- Index pour les tables déchargées
@@ -159,7 +169,7 @@ ALTER TABLE `showdate`
 -- AUTO_INCREMENT pour la table `spectacle`
 --
 ALTER TABLE `spectacle`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `ticket`
@@ -171,7 +181,7 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Contraintes pour les tables déchargées
