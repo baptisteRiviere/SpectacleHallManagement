@@ -39,7 +39,15 @@ login_form.addEventListener('submit', (evnt) => {
     })
     .then(r => r.json())
     .then(r => {
-        console.log(r);
+        let message = document.getElementById('return_add_spectacle');
+        if (r.spectacle_added) {
+            message.innerText = "the spectacle has been added";
+            document.getElementById('name').value = "";
+            document.getElementById('description').value = "";
+        } else {
+            message.innerText = r.error;
+        }
+        
     })
 });
 

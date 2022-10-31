@@ -17,12 +17,11 @@
         <input type="name" placeholder="name" id="name"/>
         <input type="textarea" placeholder="description" id="description"/>
         <select name="id_artist" id="id_artist"></select>
-
         <button id="add_spectacle_button">Add spectacle</button>
-
-        <script src="index.js"></script>
-
+        <p id="return_add_spectacle"></p>
       </form>
     </div>
+    
+    <script src="index.js"></script>
   </body>
 </html>

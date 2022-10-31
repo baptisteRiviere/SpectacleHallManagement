@@ -15,8 +15,6 @@
             (name,description,id_artist)
     VALUES  ('$name','$description',$id_artist)";
 
-    echo $write_spectacle_request;
-
     // writing request
     if ($result = mysqli_query($link,$write_spectacle_request)) {
       echo json_encode(array("spectacle_added" => true));
