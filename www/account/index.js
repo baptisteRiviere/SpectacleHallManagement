@@ -2,15 +2,15 @@
 fetch('../accessDB/getUserInformation.php')
 .then(r => r.json())
 .then(r => {
-    let firstname = document.getElementById("firstname");
-    firstname.innerText = r.firstname;
-    firstname.innerText = r.firstname;
-    console.log(r);
+    var keywords = ["username","firstname","lastname","mail","address","birthdate"]
+    keywords.forEach(function(key) 
+    { 
+      console.log(key);
+      let element = document.getElementById(key);
+      element.innerText = key + " : " + r[key];
+    }
+    );
 })
-
-
-
-
 
 // get the form to log out when submitted
 var logout_form = document.getElementById('logout_form');

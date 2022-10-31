@@ -15,7 +15,7 @@
       <p id="username"></p>
       <p id="firstname"></p>
       <p id="lastname"></p>
-      <p id="email"></p>
+      <p id="mail"></p>
       <p id="address"></p>
       <p id="birthdate"></p>
     </div>
