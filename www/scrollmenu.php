@@ -9,6 +9,7 @@
   <?php if (isset($_SESSION['status'])): ?>
     <a href="/account/index.php">Me</a>
   <?php else: ?>
+    <a href="/boxOffice/index.php">Box-office</a>
     <a href="/auth/index.php">Sign-in</a>
     <a href="/auth/signup.php">Sign-up</a>
   <?php endif; ?>
