@@ -15,10 +15,9 @@
     <img src="img/trex.png">
   </body>
 
-  <div id="Box_office">
+  <div id="box_office">
       <h1>Box-office</h1>
-      <form class="spectacle_choice" id="spectacle_choice"></form>
-      <button id="login_button">voir</button>
+      <form class="box_office_form" id="box_office_form"></form>
     </div>
 
   <script src="index.js"></script>
