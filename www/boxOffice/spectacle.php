@@ -24,6 +24,13 @@
       <p id="description"></p>
     </div>
 
+    <div id="shows">
+      <h1>shows</h1>
+      <form method=GET action="show.php" class="showdate_form" id="showdate_form">
+        <label>show date<select name="select_showdate" id="select_showdate"></select></label>
+      </form>
+    </div>
+
   </body>
 
   <script src="spectacle.js"></script>

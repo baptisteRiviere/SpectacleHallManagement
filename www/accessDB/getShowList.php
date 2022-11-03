@@ -9,12 +9,11 @@
         
         $spectacle_id = $_POST['spectacle_id'];
 
-        /*
         // request to get list of every shows of the spectacle
-        $request = "SELECT s.name, s.description, u.lastname, u.firstname 
-                    FROM spectacle AS s
-                    JOIN user AS u ON s.id_artist = u.id
-                    WHERE s.id = $spectacle_id";
+        $request = "SELECT sd.datetime, sd.id 
+                    FROM spectacle AS sp
+                    JOIN showdate AS sd ON sp.id = sd.id_spectacle
+                    WHERE sp.id = $spectacle_id";
 
         // asking database
         $response = [];
@@ -23,9 +22,8 @@
                 $response[] = $line;
             }
         }
-        */
 
         // return the list with every information
-        echo json_encode(array("error"=>"not ready"));
+        echo json_encode($response);
     }
  ?>
