@@ -28,6 +28,7 @@
       <h1>shows</h1>
       <form method=GET action="show.php" class="showdate_form" id="showdate_form">
         <label>show date<select name="select_showdate" id="select_showdate"></select></label>
+        <label><button id="select_showdate_button">Choose spectacle</button>
       </form>
     </div>
 
