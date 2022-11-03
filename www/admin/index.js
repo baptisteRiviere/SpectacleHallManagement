@@ -83,7 +83,7 @@ add_show_form.addEventListener('submit', (evnt) => {
     var data = new FormData();
     data.append('date',date.value);
     data.append('time',time.value);
-    data.append('halfless',halfless.value);
+    data.append('halfless',halfless.checked);
     data.append('id_spectacle',id_spectacle.value);
     fetch('../accessDB/addShow.php', {
         method: 'post',
@@ -91,14 +91,11 @@ add_show_form.addEventListener('submit', (evnt) => {
     })
     .then(r => r.json())
     .then(r => {
-        console.log(r);
-        /*
         let message = document.getElementById('return_add_show');
-        if (r.spectacle_added) {
+        if (r.show_added) {
             message.innerText = "the show has been added, please refresh to update";
         } else {
             message.innerText = r.error;
         }
-        */
     })
 });
