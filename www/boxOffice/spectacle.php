@@ -12,6 +12,13 @@
   <body>
     <?php include("../scrollmenu.php"); ?>
 
+    <p>
+      <?php 
+        echo $_GET["spectacle_id"];
+        
+      ?>
+    </p>
+
     <div id="presentation">
       <h1>Presentation</h1>
       <p>description</p>

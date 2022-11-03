@@ -13,7 +13,7 @@
     <?php include("../scrollmenu.php"); ?>
     <div id="box_office">
       <h1>Box-office</h1>
-      <form class="box_office_form" id="box_office_form"></form>
+      <form method=GET action="spectacle.php" class="box_office_form" id="box_office_form"></form>
     </div>
   </body>
 

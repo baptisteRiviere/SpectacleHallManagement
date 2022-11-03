@@ -9,9 +9,12 @@ fetch('../accessDB/getSpectacleList.php')
         checkbox.type = "checkbox";
         checkbox.value = spectacle.id;
         checkbox.id = "checkbox" + spectacle.id;
+        checkbox.name = "spectacle_id";
 
         // adding an event to access spectacle page if clicked
-        checkbox.addEventListener('click',function() { spectacle_clicked(spectacle); })
+        checkbox.addEventListener('click',function() { 
+            box_office_form.submit();
+         })
 
         var label = document.createElement('label')
         label.appendChild(document.createTextNode(spectacle.name));
@@ -20,10 +23,3 @@ fetch('../accessDB/getSpectacleList.php')
         box_office_form.appendChild(label);
     });
 })
-
-// if a spectacle is clicked, redirecting the page
-function spectacle_clicked(spectacle) {
-    var data = new FormData();
-    data.append('spectacle',spectacle);
-    document.location.href="spectacle.php"; 
-}
