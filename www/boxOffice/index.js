@@ -23,3 +23,4 @@ fetch('../accessDB/getSpectacleList.php')
         box_office_form.appendChild(label);
     });
 })
+

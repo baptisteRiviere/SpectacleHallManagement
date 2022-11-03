@@ -1,5 +1,9 @@
 <?php
-  session_start();
+  if (!isset($_GET["spectacle_id"])) {
+    die("error : spectacle id hasn't been sent");
+  } else {
+    session_start();
+  }  
 ?>
 
 
@@ -12,16 +16,12 @@
   <body>
     <?php include("../scrollmenu.php"); ?>
 
-    <p>
-      <?php 
-        echo $_GET["spectacle_id"];
-        
-      ?>
-    </p>
+    <input type=hidden id=spectacle_id value=<?php echo $_GET["spectacle_id"]; ?>>
 
     <div id="presentation">
-      <h1>Presentation</h1>
-      <p>description</p>
+      <h1 id="title"></h1>
+      <p id="artist"></p>
+      <p id="description"></p>
     </div>
 
   </body>
