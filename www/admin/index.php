@@ -21,6 +21,18 @@
         <p id="return_add_spectacle"></p>
       </form>
     </div>
+
+    <div id="add_show">
+      <h1>add show</h1>
+      <form class="add_show_form" id="add_show_form">
+        <input type="date" placeholder="date" id="date"/>
+        <input type="time" placeholder="time" id="time">
+        <input type="checkbox" placeholder="halfless" id="halfless">
+        <select name="id_spectacle" id="id_spectacle"></select>
+        <button id="add_show_button">Add show</button>
+        <p id="return_add_show"></p>
+      </form>
+    </div>
     
     <script src="index.js"></script>
   </body>
