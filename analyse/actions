@@ -2,3 +2,4 @@
 - pouvoir intégrer des apostrophes dans les descriptions et titres des spectacles 
 - dans login : prévenir des bugs comme rentrer mauvais caractères (' par exemple)
 - ajouter une image dans la description d'un spectacle
+- ajout 'prix de base' au spectacle pour ajouter 'prix place' par dessus
