@@ -14,8 +14,6 @@
                                 (id_showDate,id_place)
                                 VALUES  ($id_showDate,$id_place)";
 
-    echo $add_ticket_request;
-
     // writing request
     if ($result = mysqli_query($link,$add_ticket_request)) {
       echo json_encode(array("ticket_added" => true));

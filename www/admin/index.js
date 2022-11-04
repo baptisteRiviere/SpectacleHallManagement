@@ -97,22 +97,27 @@ add_show_form.addEventListener('submit', (evnt) => {
             fetch('../accessDB/getPlaceList.php')
             .then(r_place => r_place.json())
             .then(r_place => {
+                // for each place we are creating a ticket
                 r_place.forEach(place => {
-                    // for each place we'r creating a ticket
-                    var data_add_ticket = new FormData();
-                    data_add_ticket.append('id_showDate',r_show.id);
-                    data_add_ticket.append('id_place',place.id);
-                    fetch('../accessDB/addTicket.php', {
-                        method: 'post',
-                        body: data_add_ticket
-                    })
-                    .then(r_ticket => r_ticket.text())
-                    .then(r_ticket => {
-                        //console.log(r_ticket);
-                        if (r_show.error != null) {
-                            console.log(r_ticket.error)
-                        }
-                    })
+                    // checking id we are in a halfless disposition
+                    // in this case every odd id isn't considered
+                    if (!(halfless.checked && place.id%2 == 1)) {
+
+                        // preparing to add the ticket
+                        var data_add_ticket = new FormData();
+                        data_add_ticket.append('id_showDate',r_show.id);
+                        data_add_ticket.append('id_place',place.id);
+                        fetch('../accessDB/addTicket.php', {
+                            method: 'post',
+                            body: data_add_ticket
+                        })
+                        .then(r_ticket => r_ticket.json())
+                        .then(r_ticket => {
+                            if (r_show.error != null) {
+                                console.log(r_ticket.error);
+                            }
+                        })
+                    }
                 })
             })
             message.innerText = "the show has been added, please refresh to update";
