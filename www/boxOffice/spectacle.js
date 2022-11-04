@@ -42,11 +42,3 @@ fetch('../accessDB/getShowList.php', {
   });
 })
 
-// adding an event when the form is submitted
-showdate_form.addEventListener('submit', (evnt) => {
-  evnt.preventDefault();
-
-  // getting information
-  var show_id = showdate_form.elements["select_showdate"];
-  console.log(show_id.value);
-})
