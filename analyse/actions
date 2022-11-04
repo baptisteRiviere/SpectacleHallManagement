@@ -1,2 +1,4 @@
 - faire en sorte de revenir à la page précédente après login sauf quand on revient de signup
-- 
+- pouvoir intégrer des apostrophes dans les descriptions et titres des spectacles 
+- dans login : prévenir des bugs comme rentrer mauvais caractères (' par exemple)
+- ajouter une image dans la description d'un spectacle
