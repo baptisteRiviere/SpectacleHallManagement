@@ -18,9 +18,7 @@
 
     <input type=hidden id=showdate_id value=<?php echo $_GET["showdate_id"]; ?>>
 
-    <p><?php echo $_GET["showdate_id"];  ?></p>
-
   </body>
 
-  <script src="spectacle.js"></script>
+  <script src="showdate.js"></script>
 </html>
