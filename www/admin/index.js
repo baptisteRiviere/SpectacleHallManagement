@@ -50,10 +50,11 @@ add_spectacle_form.addEventListener('submit', (evnt) => {
 
 
 
-//// ADDING SHOW
+//// ADDING SHOWDATE
 
 var select_spectacle = document.getElementById('id_spectacle'); 
 var add_show_form = document.getElementById('add_show_form');
+let message = document.getElementById('return_add_show');
 
 // requesting the spectacles list
 fetch('../accessDB/getSpectacleList.php')
@@ -83,19 +84,41 @@ add_show_form.addEventListener('submit', (evnt) => {
     var data = new FormData();
     data.append('date',date.value);
     data.append('time',time.value);
-    data.append('halfless',halfless.checked);
     data.append('id_spectacle',id_spectacle.value);
     fetch('../accessDB/addShow.php', {
         method: 'post',
         body: data
     })
-    .then(r => r.json())
-    .then(r => {
-        let message = document.getElementById('return_add_show');
-        if (r.show_added) {
+    .then(r_show => r_show.json())
+    .then(r_show => {
+        if (r_show.error == null) {
+            //data.append('halfless',halfless.checked);
+            // creating an empty ticket for every place with the id of the showdate
+            fetch('../accessDB/getPlaceList.php')
+            .then(r_place => r_place.json())
+            .then(r_place => {
+                r_place.forEach(place => {
+                    // for each place we'r creating a ticket
+                    var data_add_ticket = new FormData();
+                    data_add_ticket.append('id_showDate',r_show.id);
+                    data_add_ticket.append('id_place',place.id);
+                    fetch('../accessDB/addTicket.php', {
+                        method: 'post',
+                        body: data_add_ticket
+                    })
+                    .then(r_ticket => r_ticket.text())
+                    .then(r_ticket => {
+                        //console.log(r_ticket);
+                        if (r_show.error != null) {
+                            console.log(r_ticket.error)
+                        }
+                    })
+                })
+            })
             message.innerText = "the show has been added, please refresh to update";
         } else {
-            message.innerText = r.error;
+            message.innerText = r_show.error;
         }
     })
 });
+
