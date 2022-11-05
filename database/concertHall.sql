@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 04 nov. 2022 à 14:34
+-- Généré le : sam. 05 nov. 2022 à 10:15
 -- Version du serveur :  5.7.24
 -- Version de PHP : 8.0.1
 
@@ -30,24 +30,25 @@ SET time_zone = "+00:00";
 CREATE TABLE `place` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `location` varchar(3) NOT NULL,
-  `category` varchar(10) NOT NULL
+  `category` varchar(10) NOT NULL,
+  `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `place`
 --
 
-INSERT INTO `place` (`id`, `location`, `category`) VALUES
-(1, 'A1', 'VIP'),
-(2, 'A2', 'VIP'),
-(3, 'A3', 'VIP'),
-(4, 'MOP', 'MOP'),
-(5, 'MOP', 'MOP'),
-(6, 'MOP', 'MOP'),
-(7, 'B1', 'GRS'),
-(8, 'B2', 'GRS'),
-(9, 'B3', 'GRS'),
-(10, 'B4', 'GRS');
+INSERT INTO `place` (`id`, `location`, `category`, `price`) VALUES
+(1, 'A1', 'VIP', 0),
+(2, 'A2', 'VIP', 0),
+(3, 'A3', 'VIP', 0),
+(4, 'MOP', 'MOP', 0),
+(5, 'MOP', 'MOP', 0),
+(6, 'MOP', 'MOP', 0),
+(7, 'B1', 'GRS', 0),
+(8, 'B2', 'GRS', 0),
+(9, 'B3', 'GRS', 0),
+(10, 'B4', 'GRS', 0);
 
 -- --------------------------------------------------------
 
@@ -58,7 +59,6 @@ INSERT INTO `place` (`id`, `location`, `category`) VALUES
 CREATE TABLE `showdate` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `id_spectacle` bigint(20) UNSIGNED NOT NULL,
-  `halfless` tinyint(1) NOT NULL,
   `datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -66,13 +66,11 @@ CREATE TABLE `showdate` (
 -- Déchargement des données de la table `showdate`
 --
 
-INSERT INTO `showdate` (`id`, `id_spectacle`, `halfless`, `datetime`) VALUES
-(1, 13, 0, '2022-11-17 06:54:00'),
-(2, 13, 1, '2022-11-18 05:04:00'),
-(3, 13, 0, '2022-11-19 16:16:00'),
-(4, 14, 0, '2022-11-19 19:00:00'),
-(5, 13, 0, '2022-11-16 19:00:00'),
-(6, 15, 1, '2022-11-24 18:00:00');
+INSERT INTO `showdate` (`id`, `id_spectacle`, `datetime`) VALUES
+(36, 13, '2022-11-16 18:00:00'),
+(37, 14, '2022-11-18 18:00:00'),
+(38, 13, '2022-11-23 15:00:00'),
+(39, 14, '2022-11-15 20:00:00');
 
 -- --------------------------------------------------------
 
@@ -84,17 +82,19 @@ CREATE TABLE `spectacle` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(40) NOT NULL,
   `description` text NOT NULL,
-  `id_artist` bigint(20) UNSIGNED NOT NULL
+  `id_artist` bigint(20) UNSIGNED NOT NULL,
+  `price` float NOT NULL DEFAULT '15'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `spectacle`
 --
 
-INSERT INTO `spectacle` (`id`, `name`, `description`, `id_artist`) VALUES
-(13, 'patinage semi artistique', 'Le ptit Rex vous propose un événement de danse incroyable mellant patinage et chants, Soso lagirafe vous fera vibrer par sa grace et son interprétation de Et si tu n existais pas', 2),
-(14, 'Que ça swing', 'Comment peut-on concevoir un spectacle aussi surprenant ? Bixente nous fait voyager dans le temps pour revenir sur l histoire du golf avec un humour époustouflant ! Du club de golf à la voiturette (bien utile dans certains contextes), Bixente vous fera hurler de rire', 3),
-(15, 'spectacle test', 'juste un test pour voir si la salle est bien', 2);
+INSERT INTO `spectacle` (`id`, `name`, `description`, `id_artist`, `price`) VALUES
+(13, 'patinage semi artistique', 'Le ptit Rex vous propose un événement de danse incroyable mellant patinage et chants, Soso lagirafe vous fera vibrer par sa grace et son interprétation de Et si tu n existais pas', 2, 0),
+(14, 'Que ça swing', 'Comment peut-on concevoir un spectacle aussi surprenant ? Bixente nous fait voyager dans le temps pour revenir sur l histoire du golf avec un humour époustouflant ! Du club de golf à la voiturette (bien utile dans certains contextes), Bixente vous fera hurler de rire', 3, 0),
+(15, 'spectacle test', 'juste un test pour voir si la salle est bien', 2, 0),
+(16, 'One girl show', 'A base d humour fondé sur les blagues à toto, Soso lagirafe vous fera mourir de rire pendant plus de 2h de show intense', 2, 15);
 
 -- --------------------------------------------------------
 
@@ -105,10 +105,40 @@ INSERT INTO `spectacle` (`id`, `name`, `description`, `id_artist`) VALUES
 CREATE TABLE `ticket` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `id_showDate` bigint(20) UNSIGNED NOT NULL,
-  `id_spectator` bigint(20) UNSIGNED NOT NULL,
-  `id_place` bigint(20) UNSIGNED NOT NULL,
-  `price` float NOT NULL
+  `id_spectator` bigint(20) UNSIGNED DEFAULT NULL,
+  `id_place` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `ticket`
+--
+
+INSERT INTO `ticket` (`id`, `id_showDate`, `id_spectator`, `id_place`) VALUES
+(85, 36, NULL, 1),
+(86, 36, NULL, 7),
+(87, 36, NULL, 4),
+(88, 36, NULL, 3),
+(89, 36, NULL, 5),
+(90, 36, NULL, 6),
+(91, 36, NULL, 2),
+(92, 36, NULL, 10),
+(93, 36, NULL, 8),
+(94, 36, NULL, 9),
+(95, 37, NULL, 6),
+(96, 37, NULL, 8),
+(97, 37, NULL, 4),
+(98, 37, NULL, 2),
+(99, 37, NULL, 10),
+(100, 38, NULL, 6),
+(101, 38, NULL, 8),
+(102, 38, NULL, 2),
+(103, 38, NULL, 10),
+(104, 38, NULL, 4),
+(105, 39, NULL, 4),
+(106, 39, NULL, 6),
+(107, 39, NULL, 10),
+(108, 39, NULL, 2),
+(109, 39, NULL, 8);
 
 -- --------------------------------------------------------
 
@@ -194,19 +224,19 @@ ALTER TABLE `place`
 -- AUTO_INCREMENT pour la table `showdate`
 --
 ALTER TABLE `showdate`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT pour la table `spectacle`
 --
 ALTER TABLE `spectacle`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT pour la table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT pour la table `user`

@@ -11,12 +11,12 @@
     $id_artist    = $_POST["id_artist"];
  
     // request to write new spectacle in database
-    $write_spectacle_request = "INSERT INTO spectacle 
+    $add_spectacle_request = "INSERT INTO spectacle 
             (name,description,id_artist)
     VALUES  ('$name','$description',$id_artist)";
 
     // writing request
-    if ($result = mysqli_query($link,$write_spectacle_request)) {
+    if ($result = mysqli_query($link,$add_spectacle_request)) {
       echo json_encode(array("spectacle_added" => true));
     } else {
       echo json_encode(array("error" => "Error : the spectacle hasn't been added"));
