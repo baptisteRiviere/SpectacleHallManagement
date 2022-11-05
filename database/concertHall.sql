@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 05 nov. 2022 à 10:15
+-- Généré le : sam. 05 nov. 2022 à 19:57
 -- Version du serveur :  5.7.24
 -- Version de PHP : 8.0.1
 
@@ -70,7 +70,8 @@ INSERT INTO `showdate` (`id`, `id_spectacle`, `datetime`) VALUES
 (36, 13, '2022-11-16 18:00:00'),
 (37, 14, '2022-11-18 18:00:00'),
 (38, 13, '2022-11-23 15:00:00'),
-(39, 14, '2022-11-15 20:00:00');
+(39, 14, '2022-11-15 20:00:00'),
+(40, 16, '2022-12-31 20:00:00');
 
 -- --------------------------------------------------------
 
@@ -138,7 +139,17 @@ INSERT INTO `ticket` (`id`, `id_showDate`, `id_spectator`, `id_place`) VALUES
 (106, 39, NULL, 6),
 (107, 39, NULL, 10),
 (108, 39, NULL, 2),
-(109, 39, NULL, 8);
+(109, 39, NULL, 8),
+(110, 40, NULL, 1),
+(111, 40, NULL, 2),
+(112, 40, NULL, 3),
+(113, 40, NULL, 4),
+(114, 40, NULL, 7),
+(115, 40, NULL, 10),
+(116, 40, NULL, 8),
+(117, 40, NULL, 5),
+(118, 40, NULL, 9),
+(119, 40, NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -224,7 +235,7 @@ ALTER TABLE `place`
 -- AUTO_INCREMENT pour la table `showdate`
 --
 ALTER TABLE `showdate`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT pour la table `spectacle`
@@ -236,7 +247,7 @@ ALTER TABLE `spectacle`
 -- AUTO_INCREMENT pour la table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT pour la table `user`
