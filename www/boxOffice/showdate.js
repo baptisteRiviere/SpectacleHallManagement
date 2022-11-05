@@ -4,48 +4,18 @@ var showdate_id = document.getElementById("showdate_id").value;
 console.log(showdate_id);
 
 
-
-
-/*
 // initialising data 
 var data = new FormData();
-data.append('spectacle_id',spectacle_id);
+data.append('showdate_id',showdate_id);
 
 // requesting spectacle information
-fetch('../accessDB/getSpectacleInformation.php', {
+fetch('../accessDB/getTicketList.php', {
   method: 'post',
   body: data
 })
 .then(r => r.json())
 .then(r => {
-  var title = document.getElementById("title");
-  var description = document.getElementById("description");
-  var artist = document.getElementById("artist");
-
-  title.innerText = r.name;
-  description.innerText = r.description;
-  artist.innerText = r.firstname + " " + r.lastname;
-})
-
-//// GETTING shows and chosing one
-
-var select_showdate = document.getElementById('select_showdate'); 
-var showdate_form = document.getElementById('showdate_form');
-
-// requesting shows list
-fetch('../accessDB/getShowList.php', {
-  method: 'post',
-  body: data
-})
-.then(r => r.json())
-.then(r => {
-  r.forEach(showdate => {
-    // create option using DOM
-    const newOption = document.createElement('option');
-    newOption.value = showdate.id;
-    newOption.innerHTML = showdate.datetime;
-    select_showdate.appendChild(newOption);
+  r.forEach(ticket => {
+    console.log(ticket);
   });
 })
-
-*/
