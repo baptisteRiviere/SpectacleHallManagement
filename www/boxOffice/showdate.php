@@ -18,6 +18,14 @@
 
     <input type=hidden id=showdate_id value=<?php echo $_GET["showdate_id"]; ?>>
 
+    <div id="places"></div>
+
+    <div id="information">
+      <p id="place_category"></p>
+      <p id="place_price"></p>
+      <p id="place_location"></p>
+      <button id="book" type>Select</button>
+    </div>
   </body>
 
   <script src="showdate.js"></script>
