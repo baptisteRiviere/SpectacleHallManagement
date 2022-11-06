@@ -1,13 +1,11 @@
-// getting spectacle id
+// getting html elements
 var showdate_id = document.getElementById("showdate_id").value;
 var places = document.getElementById("places");
 var place_category = document.getElementById("place_category");
 var place_price = document.getElementById("place_price");
 var place_location = document.getElementById("place_location");
 
-console.log(showdate_id);
-
-// initialising data 
+// initialising data to send to getTicketList.php
 var data = new FormData();
 data.append('showdate_id',showdate_id);
 
@@ -19,19 +17,23 @@ fetch('../accessDB/getTicketList.php', {
 .then(r => r.json())
 .then(r => {
   r.forEach(ticket => {
+    // creating an image for each place
     const placeImage = document.createElement('img');
+    // adding some attributes
     placeImage.selected = false;
-    if (ticket.id_spectator == null) {
+    placeImage.style.height = '80px';
+    placeImage.style.width = '80px';
+    placeImage.id = ticket.id;
+    // adding some actions if the ticket hasn't been booked yet
+    if (ticket.id_spectator == null) { 
       placeImage.src = "/img/place_available.png"
       placeImage.addEventListener("mouseover", (evnt) => { mouseOverPlace(placeImage,ticket) })
       placeImage.addEventListener("mouseout", (evnt) => { mouseOutPlace(placeImage) })
       placeImage.addEventListener("click", (evnt) => { clickPlace(placeImage,ticket) })
-    } else {
+    } else { // showing booked tickets by a special image
       placeImage.src = "/img/place_booked.png"
     }
-    placeImage.style.height = '80px';
-    placeImage.style.width = '80px';
-    placeImage.id = ticket.id;
+    // finally append the image in the html
     places.appendChild(placeImage);
   });
 })
