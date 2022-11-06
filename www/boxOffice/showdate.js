@@ -4,6 +4,11 @@ var places = document.getElementById("places");
 var place_category = document.getElementById("place_category");
 var place_price = document.getElementById("place_price");
 var place_location = document.getElementById("place_location");
+var book_number = document.getElementById("book_number");
+var book_price = document.getElementById("book_price");
+var book_button = document.getElementById("book_button");
+
+/// about the map
 
 // initialising data to send to getTicketList.php
 var data = new FormData();
@@ -65,5 +70,4 @@ function clickPlace(placeImage,ticket) {
     placeImage.src = "/img/place_selected.png"
     placeImage.selected = true;
   }
-  
 }

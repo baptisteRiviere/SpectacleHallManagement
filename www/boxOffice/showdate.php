@@ -26,8 +26,12 @@
       <p id="place_location"></p>
     </div>
 
-    <button id="book" type>Book selected places</button>
-    
+    <div id="book">
+      <p id="book_number"></p>
+      <p id="book_price"></p>
+      <button id="book_button" type>Book selected places</button>
+    </div>
+
   </body>
 
   <script src="showdate.js"></script>
