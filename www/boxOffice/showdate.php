@@ -24,8 +24,10 @@
       <p id="place_category"></p>
       <p id="place_price"></p>
       <p id="place_location"></p>
-      <button id="book" type>Select</button>
     </div>
+
+    <button id="book" type>Book selected places</button>
+    
   </body>
 
   <script src="showdate.js"></script>

@@ -19,21 +19,49 @@ fetch('../accessDB/getTicketList.php', {
 .then(r => r.json())
 .then(r => {
   r.forEach(ticket => {
-    const newImage = document.createElement('img');
+    const placeImage = document.createElement('img');
+    placeImage.selected = false;
     if (ticket.id_spectator == null) {
-      newImage.src = "/img/place_available.png"
-      newImage.addEventListener("mouseover", (evnt) => { 
-        place_category.innerText = ticket.category;
-        place_price.innerText = ticket.price;
-        place_location.innerText = ticket.location;
-      })
+      placeImage.src = "/img/place_available.png"
+      placeImage.addEventListener("mouseover", (evnt) => { mouseOverPlace(placeImage,ticket) })
+      placeImage.addEventListener("mouseout", (evnt) => { mouseOutPlace(placeImage) })
+      placeImage.addEventListener("click", (evnt) => { clickPlace(placeImage,ticket) })
     } else {
-      newImage.src = "/img/place_booked.png"
+      placeImage.src = "/img/place_booked.png"
     }
-    newImage.style.height = '80px';
-    newImage.style.width = '80px';
-    newImage.id = ticket.id;
-    places.appendChild(newImage);
-    console.log(ticket);
+    placeImage.style.height = '80px';
+    placeImage.style.width = '80px';
+    placeImage.id = ticket.id;
+    places.appendChild(placeImage);
   });
 })
+
+
+function mouseOverPlace(placeImage,ticket) {
+  if (! placeImage.selected) {
+      placeImage.src = "/img/place_mouse_on.png"
+      place_category.innerText = ticket.category;
+      place_price.innerText = ticket.price;
+      place_location.innerText = ticket.location; 
+  }
+}
+
+function mouseOutPlace(placeImage) {
+  if (! placeImage.selected) {
+    placeImage.src = "/img/place_available.png"
+  }
+  place_category.innerText = "";
+  place_price.innerText = "";
+  place_location.innerText = ""; 
+}
+
+function clickPlace(placeImage,ticket) {
+  if (placeImage.selected) {
+    placeImage.src = "/img/place_mouse_on.png"
+    placeImage.selected = false;
+  } else {
+    placeImage.src = "/img/place_selected.png"
+    placeImage.selected = true;
+  }
+  
+}
