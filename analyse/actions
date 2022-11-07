@@ -3,3 +3,10 @@
 - dans login : prévenir des bugs comme rentrer mauvais caractères (' par exemple)
 - ajouter une image dans la description d'un spectacle
 - ajout 'prix de base' au spectacle pour ajouter 'prix place' par dessus
+- clic sur bouton book tickets envoie informations sur bucket
+- ajout bucket dans espace perso
+- imposer de s'authentifier à partir d'une certaine page
+- générer un plan plus détaillé, attribuer la place "scene" à l'artiste
+- interface admin pour avoir un résumé rapide des ventes
+- interface artiste
+- stopper vente quand complète ou date passée
