@@ -4,8 +4,7 @@ var places = document.getElementById("places");
 var place_category = document.getElementById("place_category");
 var place_price = document.getElementById("place_price");
 var place_location = document.getElementById("place_location");
-var book_number = document.getElementById("book_number");
-var book_price = document.getElementById("book_price");
+var message = document.getElementById("message");
 var book_button = document.getElementById("book_button");
 
 /// about the map
@@ -22,6 +21,8 @@ fetch('../accessDB/getTicketList.php', {
 .then(r => r.json())
 .then(r => {
   r.forEach(ticket => {
+    nb_selected_places = 0;
+    price_selected_places = 0;
     // creating an image for each place
     const placeImage = document.createElement('img');
     // adding some attributes
@@ -66,8 +67,11 @@ function clickPlace(placeImage,ticket) {
   if (placeImage.selected) {
     placeImage.src = "/img/place_mouse_on.png"
     placeImage.selected = false;
+    nb_selected_places -= 1;
   } else {
     placeImage.src = "/img/place_selected.png"
     placeImage.selected = true;
+    nb_selected_places += 1;
   }
+  message.innerText = "places selected : " + nb_selected_places + "\ntotalcost : " + price_selected_places + "€";
 }

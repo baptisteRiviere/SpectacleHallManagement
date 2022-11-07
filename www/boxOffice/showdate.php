@@ -27,8 +27,7 @@
     </div>
 
     <div id="book">
-      <p id="book_number"></p>
-      <p id="book_price"></p>
+      <p id="message"></p>
       <button id="book_button" type>Book selected places</button>
     </div>
 
