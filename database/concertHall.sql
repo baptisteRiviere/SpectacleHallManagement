@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 05 nov. 2022 à 19:57
+-- Généré le : lun. 07 nov. 2022 à 18:02
 -- Version du serveur :  5.7.24
 -- Version de PHP : 8.0.1
 
@@ -39,16 +39,16 @@ CREATE TABLE `place` (
 --
 
 INSERT INTO `place` (`id`, `location`, `category`, `price`) VALUES
-(1, 'A1', 'VIP', 0),
-(2, 'A2', 'VIP', 0),
-(3, 'A3', 'VIP', 0),
-(4, 'MOP', 'MOP', 0),
-(5, 'MOP', 'MOP', 0),
-(6, 'MOP', 'MOP', 0),
-(7, 'B1', 'GRS', 0),
-(8, 'B2', 'GRS', 0),
-(9, 'B3', 'GRS', 0),
-(10, 'B4', 'GRS', 0);
+(1, 'A1', 'VIP', 40),
+(2, 'A2', 'VIP', 40),
+(3, 'A3', 'VIP', 40),
+(4, 'MOP', 'MOP', 10),
+(5, 'MOP', 'MOP', 10),
+(6, 'MOP', 'MOP', 10),
+(7, 'B1', 'GRS', 20),
+(8, 'B2', 'GRS', 20),
+(9, 'B3', 'GRS', 20),
+(10, 'B4', 'GRS', 20);
 
 -- --------------------------------------------------------
 
@@ -92,9 +92,9 @@ CREATE TABLE `spectacle` (
 --
 
 INSERT INTO `spectacle` (`id`, `name`, `description`, `id_artist`, `price`) VALUES
-(13, 'patinage semi artistique', 'Le ptit Rex vous propose un événement de danse incroyable mellant patinage et chants, Soso lagirafe vous fera vibrer par sa grace et son interprétation de Et si tu n existais pas', 2, 0),
-(14, 'Que ça swing', 'Comment peut-on concevoir un spectacle aussi surprenant ? Bixente nous fait voyager dans le temps pour revenir sur l histoire du golf avec un humour époustouflant ! Du club de golf à la voiturette (bien utile dans certains contextes), Bixente vous fera hurler de rire', 3, 0),
-(15, 'spectacle test', 'juste un test pour voir si la salle est bien', 2, 0),
+(13, 'patinage semi artistique', 'Le ptit Rex vous propose un événement de danse incroyable mellant patinage et chants, Soso lagirafe vous fera vibrer par sa grace et son interprétation de Et si tu n existais pas', 2, 20),
+(14, 'Que ça swing', 'Comment peut-on concevoir un spectacle aussi surprenant ? Bixente nous fait voyager dans le temps pour revenir sur l histoire du golf avec un humour époustouflant ! Du club de golf à la voiturette (bien utile dans certains contextes), Bixente vous fera hurler de rire', 3, 20),
+(15, 'spectacle test', 'juste un test pour voir si la salle est bien', 2, 5),
 (16, 'One girl show', 'A base d humour fondé sur les blagues à toto, Soso lagirafe vous fera mourir de rire pendant plus de 2h de show intense', 2, 15);
 
 -- --------------------------------------------------------
@@ -115,7 +115,7 @@ CREATE TABLE `ticket` (
 --
 
 INSERT INTO `ticket` (`id`, `id_showDate`, `id_spectator`, `id_place`) VALUES
-(85, 36, NULL, 1),
+(85, 36, 4, 1),
 (86, 36, NULL, 7),
 (87, 36, NULL, 4),
 (88, 36, NULL, 3),
@@ -126,19 +126,19 @@ INSERT INTO `ticket` (`id`, `id_showDate`, `id_spectator`, `id_place`) VALUES
 (93, 36, NULL, 8),
 (94, 36, NULL, 9),
 (95, 37, NULL, 6),
-(96, 37, NULL, 8),
+(96, 37, 4, 8),
 (97, 37, NULL, 4),
 (98, 37, NULL, 2),
 (99, 37, NULL, 10),
 (100, 38, NULL, 6),
-(101, 38, NULL, 8),
+(101, 38, 4, 8),
 (102, 38, NULL, 2),
 (103, 38, NULL, 10),
 (104, 38, NULL, 4),
 (105, 39, NULL, 4),
 (106, 39, NULL, 6),
 (107, 39, NULL, 10),
-(108, 39, NULL, 2),
+(108, 39, 4, 2),
 (109, 39, NULL, 8),
 (110, 40, NULL, 1),
 (111, 40, NULL, 2),

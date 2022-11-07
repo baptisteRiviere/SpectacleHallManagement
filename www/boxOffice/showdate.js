@@ -7,6 +7,10 @@ var place_location = document.getElementById("place_location");
 var message = document.getElementById("message");
 var book_button = document.getElementById("book_button");
 
+
+nb_selected_places = 0;
+price_selected_places = 0;
+
 /// about the map
 
 // initialising data to send to getTicketList.php
@@ -21,8 +25,6 @@ fetch('../accessDB/getTicketList.php', {
 .then(r => r.json())
 .then(r => {
   r.forEach(ticket => {
-    nb_selected_places = 0;
-    price_selected_places = 0;
     // creating an image for each place
     const placeImage = document.createElement('img');
     // adding some attributes
@@ -32,6 +34,16 @@ fetch('../accessDB/getTicketList.php', {
     placeImage.id = ticket.id;
     // adding some actions if the ticket hasn't been booked yet
     if (ticket.id_spectator == null) { 
+      var data_ticket_id = new FormData();
+      data_ticket_id.append('ticket_id',ticket.id);
+      fetch('../accessDB/getTicketPrice.php', {
+        method: 'post',
+        body: data_ticket_id
+      })
+      .then(r => r.text())
+      .then(r => {
+        ticket.price = parseFloat(r);
+      })
       placeImage.src = "/img/place_available.png"
       placeImage.addEventListener("mouseover", (evnt) => { mouseOverPlace(placeImage,ticket) })
       placeImage.addEventListener("mouseout", (evnt) => { mouseOutPlace(placeImage) })
@@ -68,10 +80,13 @@ function clickPlace(placeImage,ticket) {
     placeImage.src = "/img/place_mouse_on.png"
     placeImage.selected = false;
     nb_selected_places -= 1;
+    price_selected_places -= ticket.price;
   } else {
     placeImage.src = "/img/place_selected.png"
     placeImage.selected = true;
     nb_selected_places += 1;
+    price_selected_places += ticket.price;
   }
   message.innerText = "places selected : " + nb_selected_places + "\ntotalcost : " + price_selected_places + "€";
 }
+
