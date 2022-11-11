@@ -5,11 +5,17 @@ fetch('../accessDB/getUserInformation.php')
     var keywords = ["username","firstname","lastname","mail","address","birthdate"]
     keywords.forEach(function(key) 
     { 
-      console.log(key);
       let element = document.getElementById(key);
       element.innerText = key + " : " + r[key];
     }
     );
+})
+
+// calling php script to get the tickets booked by the user
+fetch('../accessDB/getUserBookedTickets.php')
+.then(r => r.json())
+.then(r => {
+    console.log(r);
 })
 
 // get the form to log out when submitted

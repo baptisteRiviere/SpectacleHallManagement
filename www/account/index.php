@@ -20,8 +20,8 @@
       <p id="birthdate"></p>
     </div>
 
-    <div id="basket">
-      <p>basket</p>
+    <div id="tickets">
+      <h1>Tickets booked</h1>
     </div>
 
     <div id="logout">
