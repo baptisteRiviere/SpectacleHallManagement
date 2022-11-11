@@ -9,7 +9,8 @@ fetch('../accessDB/getSpectacleList.php')
         // creating a card
         var card_div = document.createElement('div');
         card_div.classList.add("card");
-        card_div.style.backgroundImage = "url('../img/spectacle_feu.jpg')"
+        //card_div.style.backgroundImage = "url('../img/spectacle_feu.jpg')"
+        card_div.style.background = "radial-gradient(#76b2fe, #b69efe)"
 
         // creating the card icon
         var card_icon_div = document.createElement('div');
