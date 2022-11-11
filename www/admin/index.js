@@ -38,7 +38,8 @@ add_spectacle_form.addEventListener('submit', (evnt) => {
     .then(r => {
         let message = document.getElementById('return_add_spectacle');
         if (r.spectacle_added) {
-            message.innerText = "the spectacle has been added, please refresh to update";
+            window.alert("the spectacle has been added");
+            location.reload();
             document.getElementById('name').value = "";
             document.getElementById('description').value = "";
         } else {
@@ -120,7 +121,8 @@ add_show_form.addEventListener('submit', (evnt) => {
                     }
                 })
             })
-            message.innerText = "the show has been added, please refresh to update";
+            window.alert("the show has been added");
+            location.reload();
         } else {
             message.innerText = r_show.error;
         }

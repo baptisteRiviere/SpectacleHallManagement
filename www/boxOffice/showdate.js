@@ -121,7 +121,8 @@ book_button.addEventListener('click', function(evnt) {
   .then(r => r.json())
   .then(r => {
     if (r.ticket_booked) {
-      message.innerText = "places have been booked, please refresh to update"
+      window.alert("places have been booked, you can find your tickets in your personal space");
+      window.location.href = "../account/index.php";
     }
   })
 });
