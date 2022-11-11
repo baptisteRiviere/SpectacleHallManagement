@@ -17,6 +17,7 @@
     <?php include("../scrollmenu.php"); ?>
 
     <input type=hidden id=showdate_id value=<?php echo $_GET["showdate_id"]; ?>>
+    <input type=hidden id=user_id value=<?php echo $_SESSION["id"]; ?>>
 
     <div id="places"></div>
 

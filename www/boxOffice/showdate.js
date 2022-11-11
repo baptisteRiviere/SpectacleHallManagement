@@ -1,5 +1,7 @@
 // getting html elements
+
 var showdate_id = document.getElementById("showdate_id").value;
+var user_id = document.getElementById("user_id").value;
 var places = document.getElementById("places");
 var place_category = document.getElementById("place_category");
 var place_price = document.getElementById("place_price");
@@ -7,9 +9,17 @@ var place_location = document.getElementById("place_location");
 var message = document.getElementById("message");
 var book_button = document.getElementById("book_button");
 
+var selected_tickets = [];
+var nb_selected_places = 0;
+var price_selected_places = 0;
 
-nb_selected_places = 0;
-price_selected_places = 0;
+
+/// about the user
+if (user_id=="") {
+  window.alert("not registered, you will be redirected to the log-in page");
+  window.location.href = "../auth/index.php";
+}
+
 
 /// about the map
 
@@ -76,17 +86,42 @@ function mouseOutPlace(placeImage) {
 }
 
 function clickPlace(placeImage,ticket) {
-  if (placeImage.selected) {
+  if (placeImage.selected) { // deselecting a place
     placeImage.src = "/img/place_mouse_on.png"
+    const index_ticket = selected_tickets.indexOf(ticket); // getting index of ticket in ticket list to remove it
+    if (index_ticket > -1) { // only splice array when item is found
+      selected_tickets.splice(index_ticket, 1); // 2nd parameter means remove one item only
+    }
     placeImage.selected = false;
     nb_selected_places -= 1;
     price_selected_places -= ticket.price;
-  } else {
-    placeImage.src = "/img/place_selected.png"
+  } else { // selecting a place
+    placeImage.src = "/img/place_selected.png"; // replacing the image
+    selected_tickets.push(ticket);
     placeImage.selected = true;
     nb_selected_places += 1;
     price_selected_places += ticket.price;
   }
-  message.innerText = "places selected : " + nb_selected_places + "\ntotalcost : " + price_selected_places + "€";
+  message.innerText = "places selected : " + selected_tickets.length + "\ntotalcost : " + price_selected_places + "€";
 }
 
+
+// places booked
+book_button.addEventListener('click', function(evnt) {
+  // initialising data to send to getTicketList.php
+  var data = new FormData();
+  data.append('selected_tickets',JSON.stringify(selected_tickets));
+  data.append('user_id',user_id);
+
+  // requesting spectacle information
+  fetch('../accessDB/bookTickets.php', {
+    method: 'post',
+    body: data
+  })
+  .then(r => r.json())
+  .then(r => {
+    if (r.ticket_booked) {
+      message.innerText = "places have been booked, please refresh to update"
+    }
+  })
+});

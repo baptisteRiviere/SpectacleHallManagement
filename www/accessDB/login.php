@@ -21,27 +21,27 @@
     // getting the state of login valid
     $key = array_keys($response)[0];
     $login_valid = $response[$key];
-  
-    // request to get the status of the user (admin, spectator, artist)
-    $request = "SELECT status FROM user WHERE username = '$username'";
-    
-    // asking database
-    $response = [];
-    if ($result = mysqli_query($link,$request)) {
-      while ($line = mysqli_fetch_assoc($result)) {
-        $response = $line;
-      }
-    }
 
-    // getting the status
-    $key = array_keys($response)[0];
-    $status = $response[$key];
 
     // if the login is valid, start a php session
     if ($login_valid) {
-      session_start();
-      $_SESSION['status'] = $status;
-      $_SESSION['username'] = $username;
+      // request to get the status of the user (admin, spectator, artist)
+      $request = "SELECT id,status FROM user WHERE username = '$username'";
+      
+      // asking database
+      $response = [];
+      if ($result = mysqli_query($link,$request)) {
+        $response = mysqli_fetch_assoc($result);
+      }
+
+      // getting the status
+      $key = array_keys($response)[0];
+      $status = $response[$key];
+        session_start();
+        $_SESSION['status'] = $response["status"];
+        $_SESSION['username'] = $username;
+        $_SESSION['id'] = $response["id"];
+        
     } 
 
     // return the state of login valid
