@@ -20,7 +20,7 @@
       <p id="birthdate"></p>
     </div>
 
-    <div id="tickets">
+    <div id="booked_tickets">
       <h1>Tickets booked</h1>
     </div>
 
