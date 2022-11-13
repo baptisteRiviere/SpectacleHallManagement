@@ -38,9 +38,10 @@ fetch('../accessDB/getTicketList.php', {
     // creating an image for each place
     const placeImage = document.createElement('img');
     // adding some attributes
+    placeImage.classList.add("place");
     placeImage.selected = false;
-    placeImage.style.height = '80px';
-    placeImage.style.width = '80px';
+    placeImage.style.gridRow = ticket.location_x;
+    placeImage.style.gridColumn = ticket.location_y;
     placeImage.id = ticket.id;
     // adding some actions if the ticket hasn't been booked yet
     if (ticket.id_spectator == null) { 
@@ -72,7 +73,7 @@ function mouseOverPlace(placeImage,ticket) {
       placeImage.src = "/img/place_mouse_on.png"
       place_category.innerText = ticket.category;
       place_price.innerText = ticket.price;
-      place_location.innerText = ticket.location; 
+      place_location.innerText = ticket.location_x.toString() + "-" + ticket.location_y.toString(); 
   }
 }
 

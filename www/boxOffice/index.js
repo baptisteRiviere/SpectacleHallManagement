@@ -14,9 +14,7 @@ fetch('../accessDB/getSpectacleList.php')
         } else {
             card_div.style.background = "radial-gradient(#76b2fe, #b69efe)"
         }
-        //card_div.style.backgroundImage = "url('../img/patin.jpg')"
-        //card_div.style.background = "radial-gradient(#76b2fe, #b69efe)"
-
+        
         // creating the card icon
         var card_icon_div = document.createElement('div');
         card_icon_div.classList.add("card__icon");

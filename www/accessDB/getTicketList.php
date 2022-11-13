@@ -2,7 +2,7 @@
 
     include "connect.php";
 
-    $request = "SELECT ti.id, ti.id_spectator, pl.location, pl.category, pl.price FROM ticket AS ti
+    $request = "SELECT ti.id, ti.id_spectator, pl.location_x, pl.location_y, pl.category, pl.price FROM ticket AS ti
                 JOIN place as pl ON ti.id_place = pl.id";
 
     if (isset($_POST['showdate_id'])) {

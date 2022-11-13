@@ -2,7 +2,7 @@
     include "connect.php";
 
     // request to get list of artists
-    $request = "SELECT id,location,category,price FROM place";
+    $request = "SELECT id,location_x,location_y,category,price FROM place";
     
     // asking database
     $response = [];
