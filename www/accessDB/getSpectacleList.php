@@ -2,7 +2,7 @@
     include "connect.php";
 
     // request to get list of artists
-    $request = "SELECT s.id, s.name 
+    $request = "SELECT s.id, s.name, s.image_path
                 FROM spectacle AS s
                 JOIN user AS u ON s.id_artist = u.id";
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 07 nov. 2022 à 18:02
+-- Généré le : Dim 13 nov. 2022 à 14:03
 -- Version du serveur :  5.7.24
 -- Version de PHP : 8.0.1
 
@@ -71,7 +71,8 @@ INSERT INTO `showdate` (`id`, `id_spectacle`, `datetime`) VALUES
 (37, 14, '2022-11-18 18:00:00'),
 (38, 13, '2022-11-23 15:00:00'),
 (39, 14, '2022-11-15 20:00:00'),
-(40, 16, '2022-12-31 20:00:00');
+(40, 16, '2022-12-31 20:00:00'),
+(41, 17, '2022-11-15 06:05:00');
 
 -- --------------------------------------------------------
 
@@ -84,18 +85,20 @@ CREATE TABLE `spectacle` (
   `name` varchar(40) NOT NULL,
   `description` text NOT NULL,
   `id_artist` bigint(20) UNSIGNED NOT NULL,
-  `price` float NOT NULL DEFAULT '15'
+  `price` float NOT NULL DEFAULT '15',
+  `image_path` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `spectacle`
 --
 
-INSERT INTO `spectacle` (`id`, `name`, `description`, `id_artist`, `price`) VALUES
-(13, 'patinage semi artistique', 'Le ptit Rex vous propose un événement de danse incroyable mellant patinage et chants, Soso lagirafe vous fera vibrer par sa grace et son interprétation de Et si tu n existais pas', 2, 20),
-(14, 'Que ça swing', 'Comment peut-on concevoir un spectacle aussi surprenant ? Bixente nous fait voyager dans le temps pour revenir sur l histoire du golf avec un humour époustouflant ! Du club de golf à la voiturette (bien utile dans certains contextes), Bixente vous fera hurler de rire', 3, 20),
-(15, 'spectacle test', 'juste un test pour voir si la salle est bien', 2, 5),
-(16, 'One girl show', 'A base d humour fondé sur les blagues à toto, Soso lagirafe vous fera mourir de rire pendant plus de 2h de show intense', 2, 15);
+INSERT INTO `spectacle` (`id`, `name`, `description`, `id_artist`, `price`, `image_path`) VALUES
+(13, 'patinage semi artistique', 'Le ptit Rex vous propose un événement de danse incroyable mellant patinage et chants, Soso lagirafe vous fera vibrer par sa grace et son interprétation de Et si tu n existais pas', 2, 20, 'patin.jpg'),
+(14, 'Que ça swing', 'Comment peut-on concevoir un spectacle aussi surprenant ? Bixente nous fait voyager dans le temps pour revenir sur l histoire du golf avec un humour époustouflant ! Du club de golf à la voiturette (bien utile dans certains contextes), Bixente vous fera hurler de rire', 3, 20, 'swing.jpg'),
+(15, 'spectacle test', 'juste un test pour voir si la salle est bien', 2, 5, NULL),
+(16, 'One girl show', 'A base d humour fondé sur les blagues à toto, Soso lagirafe vous fera mourir de rire pendant plus de 2h de show intense', 2, 15, 'ogs.jpg'),
+(17, 'spectacle test 2', 'encore un test ? Cest un chantier cette salle', 3, 15, NULL);
 
 -- --------------------------------------------------------
 
@@ -115,7 +118,7 @@ CREATE TABLE `ticket` (
 --
 
 INSERT INTO `ticket` (`id`, `id_showDate`, `id_spectator`, `id_place`) VALUES
-(85, 36, 4, 1),
+(85, 36, NULL, 1),
 (86, 36, NULL, 7),
 (87, 36, NULL, 4),
 (88, 36, NULL, 3),
@@ -149,7 +152,9 @@ INSERT INTO `ticket` (`id`, `id_showDate`, `id_spectator`, `id_place`) VALUES
 (116, 40, NULL, 8),
 (117, 40, NULL, 5),
 (118, 40, NULL, 9),
-(119, 40, NULL, 6);
+(119, 40, NULL, 6),
+(120, 41, NULL, 1),
+(121, 41, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -235,19 +240,19 @@ ALTER TABLE `place`
 -- AUTO_INCREMENT pour la table `showdate`
 --
 ALTER TABLE `showdate`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT pour la table `spectacle`
 --
 ALTER TABLE `spectacle`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT pour la table `user`
