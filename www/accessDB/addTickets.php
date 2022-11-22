@@ -2,6 +2,7 @@
 
   include "connect.php";
   
+
   // checking every fields have been delivered
   if (isset($_POST['id_showDate']) && isset($_POST['halfless'])) {
     

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : Dim 13 nov. 2022 à 14:03
+-- Généré le : mar. 22 nov. 2022 à 17:34
 -- Version du serveur :  5.7.24
 -- Version de PHP : 8.0.1
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `concerthall`
+-- Base de données : `rivierebaptiste_concerthall`
 --
 
 -- --------------------------------------------------------
@@ -29,26 +29,67 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `place` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `location` varchar(3) NOT NULL,
   `category` varchar(10) NOT NULL,
-  `price` float NOT NULL
+  `price` float NOT NULL,
+  `location_x` int(3) NOT NULL,
+  `location_y` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `place`
 --
 
-INSERT INTO `place` (`id`, `location`, `category`, `price`) VALUES
-(1, 'A1', 'VIP', 40),
-(2, 'A2', 'VIP', 40),
-(3, 'A3', 'VIP', 40),
-(4, 'MOP', 'MOP', 10),
-(5, 'MOP', 'MOP', 10),
-(6, 'MOP', 'MOP', 10),
-(7, 'B1', 'GRS', 20),
-(8, 'B2', 'GRS', 20),
-(9, 'B3', 'GRS', 20),
-(10, 'B4', 'GRS', 20);
+INSERT INTO `place` (`id`, `category`, `price`, `location_x`, `location_y`) VALUES
+(1, 'VIP', 40, 9, 1),
+(2, 'VIP', 40, 9, 2),
+(3, 'VIP', 40, 9, 3),
+(4, 'VIP', 40, 9, 4),
+(5, 'VIP', 40, 9, 5),
+(6, 'VIP', 40, 9, 6),
+(7, 'VIP', 40, 9, 7),
+(8, 'VIP', 40, 9, 8),
+(9, 'VIP', 40, 9, 9),
+(10,'VIP', 40, 9, 10),
+(11,'VIP', 40, 8, 1),
+(12,'VIP', 40, 8, 2),
+(13,'VIP', 40, 8, 3),
+(14,'VIP', 40, 8, 4),
+(15,'VIP', 40, 8, 5),
+(16,'VIP', 40, 8, 6),
+(17,'VIP', 40, 8, 7),
+(18,'VIP', 40, 8, 8),
+(19,'VIP', 40, 8, 9),
+(20,'VIP', 40, 8, 9),
+(21,'VIP', 40, 7, 1),
+(22,'VIP', 40, 7, 2),
+(23,'VIP', 40, 7, 3),
+(24,'VIP', 40, 7, 4),
+(25,'VIP', 40, 7, 5),
+(26,'VIP', 40, 7, 6),
+(27,'VIP', 40, 7, 7),
+(28,'VIP', 40, 7, 8),
+(29,'VIP', 40, 7, 9),
+(30,'VIP', 40, 7, 10),
+(31,'VIP', 40, 6, 1),
+(32,'VIP', 40, 6, 2),
+(33,'VIP', 40, 6, 3),
+(34,'VIP', 40, 6, 4),
+(35,'VIP', 40, 6, 5),
+(36,'VIP', 40, 6, 6),
+(37,'VIP', 40, 6, 7),
+(38,'VIP', 40, 6, 8),
+(39,'VIP', 40, 6, 9),
+(30,'VIP', 40, 6, 10),
+(41,'VIP', 40, 4, 1),
+(42,'VIP', 40, 4, 2),
+(43,'VIP', 40, 4, 3),
+(44,'VIP', 40, 4, 4),
+(45,'VIP', 40, 4, 5),
+(46,'VIP', 40, 4, 6),
+(47,'VIP', 40, 4, 7),
+(48,'VIP', 40, 4, 8),
+(49,'VIP', 40, 4, 9),
+(40,'VIP', 40, 4, 10);
 
 -- --------------------------------------------------------
 
@@ -61,18 +102,6 @@ CREATE TABLE `showdate` (
   `id_spectacle` bigint(20) UNSIGNED NOT NULL,
   `datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `showdate`
---
-
-INSERT INTO `showdate` (`id`, `id_spectacle`, `datetime`) VALUES
-(36, 13, '2022-11-16 18:00:00'),
-(37, 14, '2022-11-18 18:00:00'),
-(38, 13, '2022-11-23 15:00:00'),
-(39, 14, '2022-11-15 20:00:00'),
-(40, 16, '2022-12-31 20:00:00'),
-(41, 17, '2022-11-15 06:05:00');
 
 -- --------------------------------------------------------
 
@@ -112,49 +141,6 @@ CREATE TABLE `ticket` (
   `id_spectator` bigint(20) UNSIGNED DEFAULT NULL,
   `id_place` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `ticket`
---
-
-INSERT INTO `ticket` (`id`, `id_showDate`, `id_spectator`, `id_place`) VALUES
-(85, 36, NULL, 1),
-(86, 36, NULL, 7),
-(87, 36, NULL, 4),
-(88, 36, NULL, 3),
-(89, 36, NULL, 5),
-(90, 36, NULL, 6),
-(91, 36, NULL, 2),
-(92, 36, NULL, 10),
-(93, 36, NULL, 8),
-(94, 36, NULL, 9),
-(95, 37, NULL, 6),
-(96, 37, 4, 8),
-(97, 37, NULL, 4),
-(98, 37, NULL, 2),
-(99, 37, NULL, 10),
-(100, 38, NULL, 6),
-(101, 38, 4, 8),
-(102, 38, NULL, 2),
-(103, 38, NULL, 10),
-(104, 38, NULL, 4),
-(105, 39, NULL, 4),
-(106, 39, NULL, 6),
-(107, 39, NULL, 10),
-(108, 39, 4, 2),
-(109, 39, NULL, 8),
-(110, 40, NULL, 1),
-(111, 40, NULL, 2),
-(112, 40, NULL, 3),
-(113, 40, NULL, 4),
-(114, 40, NULL, 7),
-(115, 40, NULL, 10),
-(116, 40, NULL, 8),
-(117, 40, NULL, 5),
-(118, 40, NULL, 9),
-(119, 40, NULL, 6),
-(120, 41, NULL, 1),
-(121, 41, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -234,25 +220,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `place`
 --
 ALTER TABLE `place`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT pour la table `showdate`
 --
 ALTER TABLE `showdate`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT pour la table `spectacle`
 --
 ALTER TABLE `spectacle`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
 
 --
 -- AUTO_INCREMENT pour la table `user`
