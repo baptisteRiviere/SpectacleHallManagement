@@ -93,36 +93,22 @@ add_show_form.addEventListener('submit', (evnt) => {
     .then(r_show => r_show.json())
     .then(r_show => {
         if (r_show.error == null) {
-            //data.append('halfless',halfless.checked);
-            // creating an empty ticket for every place with the id of the showdate
-            fetch('../accessDB/getPlaceList.php')
-            .then(r_place => r_place.json())
-            .then(r_place => {
-                // for each place we are creating a ticket
-                r_place.forEach(place => {
-                    // checking id we are in a halfless disposition
-                    // in this case every odd id isn't considered
-                    if (!(halfless.checked && place.id%2 == 1)) {
-
-                        // preparing to add the ticket
-                        var data_add_ticket = new FormData();
-                        data_add_ticket.append('id_showDate',r_show.id);
-                        data_add_ticket.append('id_place',place.id);
-                        fetch('../accessDB/addTicket.php', {
-                            method: 'post',
-                            body: data_add_ticket
-                        })
-                        .then(r_ticket => r_ticket.json())
-                        .then(r_ticket => {
-                            if (r_show.error != null) {
-                                console.log(r_ticket.error);
-                            }
-                        })
-                    }
-                })
+            var data_add_ticket = new FormData();
+            data_add_ticket.append('id_showDate',r_show.id);
+            data_add_ticket.append('halfless',halfless.checked);
+            fetch('../accessDB/addTickets.php', {
+                method: 'post',
+                body: data_add_ticket
             })
-            window.alert("the show has been added");
-            location.reload();
+            .then(r_place => r_place.text())
+            .then(r_place => {
+                if (r_show.error != null) {
+                    console.log(r_place.error);
+                } else {
+                    window.alert("the show has been added");
+                    location.reload();
+                }
+            })
         } else {
             message.innerText = r_show.error;
         }
