@@ -103,12 +103,14 @@ add_show_form.addEventListener('submit', (evnt) => {
             .then(r_place => r_place.text())
             .then(r_place => {
                 console.log(r_place);
+                /*
                 if (r_show.error != null) {
                     console.log(r_place.error);
                 } else {
                     window.alert("the show has been added");
                     location.reload();
                 }
+                */
             })
         } else {
             message.innerText = r_show.error;
