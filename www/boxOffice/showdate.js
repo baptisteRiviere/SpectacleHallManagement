@@ -1,6 +1,6 @@
 // getting html elements
 
-var showdate_id = document.getElementById("showdate_id").value;
+var id_showdate = document.getElementById("showdate_id").value;
 var user_id = document.getElementById("user_id").value;
 var places = document.getElementById("places");
 var place_category = document.getElementById("place_category");
@@ -25,16 +25,16 @@ if (user_id=="") {
 
 // initialising data to send to getTicketList.php
 var data = new FormData();
-data.append('showdate_id',showdate_id);
+data.append('id_showdate',id_showdate);
 
 // requesting spectacle information
 fetch('../accessDB/getTicketList.php', {
   method: 'post',
   body: data
 })
-.then(r => r.json())
-.then(r => {
-  r.forEach(ticket => {
+.then(r_ticket => r_ticket.json())
+.then(r_ticket => {
+  r_ticket.forEach(ticket => {
     // creating an image for each place
     const placeImage = document.createElement('img');
     // adding some attributes
@@ -51,9 +51,9 @@ fetch('../accessDB/getTicketList.php', {
         method: 'post',
         body: data_ticket_id
       })
-      .then(r => r.text())
-      .then(r => {
-        ticket.price = parseFloat(r);
+      .then(r_price => r_price.text())
+      .then(r_price => {
+        ticket.price = parseFloat(r_price);
       })
       placeImage.src = "/img/place_available.png"
       placeImage.addEventListener("mouseover", (evnt) => { mouseOverPlace(placeImage,ticket) })
@@ -113,6 +113,7 @@ book_button.addEventListener('click', function(evnt) {
   var data = new FormData();
   data.append('selected_tickets',JSON.stringify(selected_tickets));
   data.append('user_id',user_id);
+  data.append('id_showdate',id_showdate);
 
   // requesting spectacle information
   fetch('../accessDB/bookTickets.php', {

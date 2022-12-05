@@ -10,7 +10,7 @@
         $spectacle_id = $_POST['spectacle_id'];
 
         // request to get list of every shows of the spectacle
-        $request = "SELECT sd.datetime, sd.id 
+        $request = "SELECT sd.datetime, sd.id, sd.complete
                     FROM spectacle AS sp
                     JOIN showdate AS sd ON sp.id = sd.id_spectacle
                     WHERE sp.id = $spectacle_id";

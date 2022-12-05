@@ -34,11 +34,13 @@ fetch('../accessDB/getShowList.php', {
 .then(r => r.json())
 .then(r => {
   r.forEach(showdate => {
-    // create option using DOM
-    const newOption = document.createElement('option');
-    newOption.value = showdate.id;
-    newOption.innerHTML = showdate.datetime;
-    select_showdate.appendChild(newOption);
+    if (showdate.complete == 0) {
+      // create option using DOM
+      const newOption = document.createElement('option');
+      newOption.value = showdate.id;
+      newOption.innerHTML = showdate.datetime;
+      select_showdate.appendChild(newOption);
+    }
   });
 })
 
