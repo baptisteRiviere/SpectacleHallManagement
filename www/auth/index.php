@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/auth/auth.css">
-    <title></title>
+    <title>Le p'tit Rex</title>
   </head>
   <body>
 

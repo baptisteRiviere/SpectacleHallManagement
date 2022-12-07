@@ -34,6 +34,7 @@ fetch('../accessDB/getTicketList.php', {
 })
 .then(r_ticket => r_ticket.json())
 .then(r_ticket => {
+  console.log(r_ticket);
   r_ticket.forEach(ticket => {
     // creating an image for each place
     const placeImage = document.createElement('img');
@@ -43,18 +44,9 @@ fetch('../accessDB/getTicketList.php', {
     placeImage.style.gridRow = ticket.location_x;
     placeImage.style.gridColumn = ticket.location_y;
     placeImage.id = ticket.id;
+    placeImage.price = ticket.price
     // adding some actions if the ticket hasn't been booked yet
     if (ticket.id_spectator == null) { 
-      var data_ticket_id = new FormData();
-      data_ticket_id.append('ticket_id',ticket.id);
-      fetch('../accessDB/getTicketPrice.php', {
-        method: 'post',
-        body: data_ticket_id
-      })
-      .then(r_price => r_price.text())
-      .then(r_price => {
-        ticket.price = parseFloat(r_price);
-      })
       placeImage.src = "/img/place_available.png"
       placeImage.addEventListener("mouseover", (evnt) => { mouseOverPlace(placeImage,ticket) })
       placeImage.addEventListener("mouseout", (evnt) => { mouseOutPlace(placeImage) })
@@ -64,7 +56,7 @@ fetch('../accessDB/getTicketList.php', {
     }
     // finally append the image in the html
     places.appendChild(placeImage);
-  });
+  })
 })
 
 

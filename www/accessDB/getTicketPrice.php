@@ -22,7 +22,8 @@
 
         // asking database
         if ($result = mysqli_query($link,$get_ticket_price_request)) {
-            echo mysqli_fetch_assoc($result)["ticket_price"];
+            $price = (int) mysqli_fetch_assoc($result)["ticket_price"];
+            echo json_encode(array("ticket_price" => $price));
         }
     }
  ?>

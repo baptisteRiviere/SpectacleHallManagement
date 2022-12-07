@@ -6,7 +6,7 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Le p'tit Rex</title>
   </head>
   <body>
     <?php include("../scrollmenu.php"); ?>
