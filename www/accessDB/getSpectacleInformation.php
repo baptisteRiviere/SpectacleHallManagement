@@ -13,16 +13,11 @@
                     FROM spectacle AS s
                     JOIN user AS u ON s.id_artist = u.id
                     WHERE s.id = $spectacle_id";
-
-        // asking database
-        $response = [];
+        
         if ($result = mysqli_query($link,$request)) {
-            while ($line = mysqli_fetch_assoc($result)) {
-                $response[] = $line;
-            }
+            echo json_encode(mysqli_fetch_assoc($result));
+        } else {
+            echo json_encode(array("error"=>"request invalid for getSpectacleInformation"));
         }
-
-        // return the list with every information
-        echo json_encode($response[0]);
     }
  ?>

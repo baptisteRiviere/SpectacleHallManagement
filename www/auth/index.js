@@ -17,7 +17,7 @@ login_form.addEventListener('submit', (evnt) => {
   .then(r => r.json())
   .then(r => {
     if (r.login_valid) {
-      window.location.href = "../account/index.php";
+      window.location.href = "../boxOffice/index.php";
     } else {
       login_error.innerHTML = "<p class='message'>username or password invalid</p>";
     }

@@ -5,4 +5,4 @@
 - interface admin et artiste pour avoir un résumé rapide des ventes
 - si spectacle complet et annulation billet : le remettre non complet
 - gestion erreur login
-- supprimer tous les tickets après 1 semaine après date
+- supprimer tous les tickets 1 semaine après date

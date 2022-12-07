@@ -2,7 +2,11 @@
 
   include "connect.php";
   
-  if ((isset($_POST['username'])) && (isset($_POST['password']))) {
+  if (!(isset($_POST['username'])) && (isset($_POST['password']))) {
+
+    echo json_encode(array('error' => "Error: please complete username and password"));
+
+  } else {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -37,18 +41,16 @@
       // getting the status
       $key = array_keys($response)[0];
       $status = $response[$key];
-        session_start();
-        $_SESSION['status'] = $response["status"];
-        $_SESSION['username'] = $username;
-        $_SESSION['id'] = $response["id"];
-        
+      session_start();
+      $_SESSION['status'] = $response["status"];
+      $_SESSION['username'] = $username;
+      $_SESSION['id'] = $response["id"];
+      
     } 
 
     // return the state of login valid
     echo json_encode(array('login_valid' => $login_valid));
 
-  } else {
-    echo json_encode(array('error' => "Error: please complete username and password"));
   }
   
  ?>

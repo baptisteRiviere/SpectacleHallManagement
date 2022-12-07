@@ -34,7 +34,6 @@ fetch('../accessDB/getTicketList.php', {
 })
 .then(r_ticket => r_ticket.json())
 .then(r_ticket => {
-  console.log(r_ticket);
   r_ticket.forEach(ticket => {
     // creating an image for each place
     const placeImage = document.createElement('img');

@@ -19,6 +19,7 @@ fetch('../accessDB/getSpectacleInformation.php', {
   title.innerText = r.name;
   description.innerText = r.description;
   artist.innerText = r.firstname + " " + r.lastname;
+  console.log(r.firstname + " " + r.lastname);
 })
 
 //// GETTING shows and chosing one

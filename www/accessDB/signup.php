@@ -5,15 +5,20 @@
   $keywords = ["username","firstname","lastname","mail","address","birthdate","password","password_conf"];
 
   // checking every fields have been delivered
-  if (isset($_POST['keywords'])) {
+  if (!isset($_POST['keywords'])) {
+
+    echo json_encode(array('error' => "Error : data hasn't been well delivered"));
+
+  } else {
+
     foreach ($_POST['keywords'] as $key){
         if (!(isset($_POST[$key]))) {
           echo json_encode(array('error' => "Error : $key hasn't been well delivered"));
           die();
         }
     }
-    
-    // writing request to check username is available
+
+    // writing request to check if username is available
     $username = $_POST["username"];
     $username_existing_request = "SELECT EXISTS (SELECT * FROM user WHERE username = '$username')";
     
@@ -47,6 +52,8 @@
       // checking if both password are identicals
       if ($password != $password_conf) {
         echo json_encode(array("error" => "Error : passwords are differents"));
+      } elseif (strlen($password) < 5) {
+        echo json_encode(array('error' => "Error: password must have most that 5 character"));
       } else {
         // request to write new user in database
         $write_user_request = "INSERT INTO user 
@@ -61,10 +68,6 @@
         }
       }
     }
-  
-  } else {
-    echo json_encode(array('error' => "Error : data hasn't been well delivered"));
   }
-  
-  
+
  ?>
