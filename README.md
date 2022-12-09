@@ -1,6 +1,7 @@
 # SpectacleHallManagement
 
 This project simulates an application to manage a concert and spectacle hall called "le ptit rex".
+
 html and javascript are used for the front, php is used for the back, the database is hosted in always data
 
 ## installation
@@ -26,5 +27,7 @@ Open yout navigator
 ### Linux 
 
 You may install a LAMP environment
+
 please try the following tutorial
+
 https://phoenixnap.com/kb/how-to-install-lamp-in-ubuntu
